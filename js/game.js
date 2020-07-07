@@ -13,6 +13,15 @@ tamanhoTela()
 // Criação de elementos randomicos
 function posicaoRandomica(){
 	
+	/* 
+		Antes da criação de um novo elemento
+		verificamos se já existe algum elemento na tela
+		se sim, vamos exclui-lo
+	*/
+	if(document.getElementById('mosquito')){
+		document.getElementById('mosquito').remove()
+	}
+
 	var posY = Math.abs(Math.floor(Math.random() * altura) - 120)
 	var posX = Math.abs(Math.floor(Math.random() * largura) - 120)
 
@@ -20,13 +29,18 @@ function posicaoRandomica(){
 
 	var mosquito = document.createElement('img')
 	mosquito.src = 'imagens/mosquito.png'
-	mosquito.className = tamanhoAleatorio() + ' ' + inverteLado() // Associa o retorno das funções as classes css
+	mosquito.className = alteraTamanho() + ' ' + alteraLado() // Associa o retorno das funções as classes css
 	mosquito.style.left = posX+'px'
 	mosquito.style.top = posY+'px'
+	mosquito.id = 'mosquito'
 	mosquito.style.position = 'absolute'
 	document.body.appendChild(mosquito)
 }
-posicaoRandomica()
+
+// A cada 1 segundo, criamos um novo elemento
+setInterval(function(){
+	posicaoRandomica()
+}, 1000)
 
 // Altera o tamanho dos mosquitos exibidos na tela
 function alteraTamanho(){

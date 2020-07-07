@@ -1,3 +1,11 @@
+body{
+	background-image: url(../imagens/bg.jpg);
+	background-repeat: no-repeat;
+
+}
+
+/* =-=-= MOSQUITO =-=-= */
+
 .mosquito1{
 	width: 50px;
 	height: 50px;
@@ -19,4 +27,27 @@
 
 .ladoEsquerdo{
 	transform: scaleX(-1);
+}
+
+/* =-=-= CENÁRIO =-=-= */
+
+.painel{
+	position: absolute;
+	left: 0;
+	width: 190px;
+	padding: 10px;
+	bottom: 0px;
+	border-top: 1px solid white;
+	background-color: white;
+	opacity: 0.7;
+}
+
+.vidas{
+	float: left;
+}
+
+.cronometro{
+	float: left;
+	font-size: 20px;
+	font-weight: bold;
 }
