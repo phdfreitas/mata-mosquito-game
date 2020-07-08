@@ -1,7 +1,8 @@
 body{
 	background-image: url(../imagens/bg.jpg);
 	background-repeat: no-repeat;
-
+	background-position: top center;
+	background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* =-=-= MOSQUITO =-=-= */
@@ -33,7 +34,7 @@ body{
 
 .painel{
 	position: absolute;
-	left: 0;
+	left: 42px;
 	width: 190px;
 	padding: 10px;
 	bottom: 0px;

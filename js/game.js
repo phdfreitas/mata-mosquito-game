@@ -2,6 +2,7 @@
 var altura = 0
 var largura = 0
 var vidas = 1
+var tempo = 10
 
 // A cada 'resoze' do body novos valores de largura e altura são definidos
 function tamanhoTela() {
@@ -10,6 +11,24 @@ function tamanhoTela() {
 	console.log(altura + ' ' + largura)
 }
 tamanhoTela()
+
+// Cronometro do jogo
+document.getElementById('tempo').innerHTML = tempo
+var cronometro = setInterval(function(){
+	tempo--
+
+	if(tempo < 0){
+		clearInterval(cronometro)
+		clearInterval(criaMosquito)
+		window.location.href = 'vitoria.html'
+	}
+	else{
+		document.getElementById('tempo').innerHTML = tempo
+	}
+
+}, 1000)
+
+
 
 // Criação de elementos randomicos
 function posicaoRandomica(){
@@ -51,7 +70,7 @@ function posicaoRandomica(){
 }
 
 // A cada 1 segundo, criamos um novo elemento
-setInterval(function(){
+var criaMosquito = setInterval(function(){
 	posicaoRandomica()
 }, 1000)
 
