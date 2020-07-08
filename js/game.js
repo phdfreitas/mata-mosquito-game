@@ -4,6 +4,20 @@ var largura = 0
 var vidas = 1
 var tempo = 10
 
+var tempoMosquito = 0
+var nivel = window.location.search.replace('?', '')
+
+if(nivel === 'facil'){
+	tempoMosquito = 1500
+}
+else if (nivel === 'normal'){
+	tempoMosquito = 1000	
+}
+else{
+	tempoMosquito = 750
+}
+
+
 // A cada 'resoze' do body novos valores de largura e altura são definidos
 function tamanhoTela() {
 	altura = window.innerHeight
@@ -72,7 +86,7 @@ function posicaoRandomica(){
 // A cada 1 segundo, criamos um novo elemento
 var criaMosquito = setInterval(function(){
 	posicaoRandomica()
-}, 1000)
+}, tempoMosquito)
 
 // Altera o tamanho dos mosquitos exibidos na tela
 function alteraTamanho(){
