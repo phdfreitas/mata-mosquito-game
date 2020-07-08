@@ -2,47 +2,53 @@
 var altura = 0
 var largura = 0
 var vidas = 1
-var tempo = 10
 
-var tempoMosquito = 0
+var tempoTotal = 10
+var tempoNovoMosquito = 0
+
+var pontosAtuais = 0
+var pontosNecessarios = 0
+
 var nivel = window.location.search.replace('?', '')
 
 if(nivel === 'facil'){
-	tempoMosquito = 1500
+	tempoNovoMosquito = 1500
+	tempoTotal = 60
+	pontosNecessarios = 30
 }
 else if (nivel === 'normal'){
-	tempoMosquito = 1000	
+	tempoNovoMosquito = 1000	
+	tempoTotal = 40
+	pontosNecessarios = 27
 }
 else{
-	tempoMosquito = 750
+	tempoNovoMosquito = 750
+	tempoTotal = 30
+	pontosNecessarios = 22
 }
 
-
-// A cada 'resoze' do body novos valores de largura e altura são definidos
+// A cada 'resize' do body novos valores de largura e altura são definidos
 function tamanhoTela() {
 	altura = window.innerHeight
-	largura = window.innerWidth	
-	console.log(altura + ' ' + largura)
+	largura = window.innerWidth
 }
 tamanhoTela()
 
 // Cronometro do jogo
-document.getElementById('tempo').innerHTML = tempo
+document.getElementById('tempo').innerHTML = tempoTotal
 var cronometro = setInterval(function(){
-	tempo--
+	tempoTotal--
 
-	if(tempo < 0){
+	if(tempoTotal < 0 || pontosAtuais == pontosNecessarios){
 		clearInterval(cronometro)
 		clearInterval(criaMosquito)
 		window.location.href = 'vitoria.html'
 	}
 	else{
-		document.getElementById('tempo').innerHTML = tempo
+		document.getElementById('tempo').innerHTML = tempoTotal
 	}
 
 }, 1000)
-
-
 
 // Criação de elementos randomicos
 function posicaoRandomica(){
@@ -67,8 +73,6 @@ function posicaoRandomica(){
 	var posY = Math.abs(Math.floor(Math.random() * altura) - 120)
 	var posX = Math.abs(Math.floor(Math.random() * largura) - 120)
 
-	console.log(posX, posY)
-
 	var mosquito = document.createElement('img')
 	mosquito.src = 'imagens/mosquito.png'
 	mosquito.className = alteraTamanho() + ' ' + alteraLado() // Associa o retorno das funções as classes css
@@ -78,6 +82,8 @@ function posicaoRandomica(){
 	mosquito.style.position = 'absolute'
 	mosquito.onclick = function(){
 		this.remove()
+		pontosAtuais++
+		document.getElementById('pontos').innerHTML = pontosAtuais
 	}
 
 	document.body.appendChild(mosquito)
@@ -86,7 +92,7 @@ function posicaoRandomica(){
 // A cada 1 segundo, criamos um novo elemento
 var criaMosquito = setInterval(function(){
 	posicaoRandomica()
-}, tempoMosquito)
+}, tempoNovoMosquito)
 
 // Altera o tamanho dos mosquitos exibidos na tela
 function alteraTamanho(){

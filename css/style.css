@@ -51,8 +51,9 @@ body{
 	float: left;
 }
 
-.cronometro{
+.cronometro, .pontuacao{
 	float: left;
 	font-size: 20px;
 	font-weight: bold;
 }
+
