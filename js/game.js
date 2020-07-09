@@ -1,14 +1,16 @@
 // Recuperando o tamanho da tela disponível
 var altura = 0
 var largura = 0
-var vidas = 1
 
+var vidas = 1
 var tempoTotal = 10
 var tempoNovoMosquito = 0
 
 var pontosAtuais = 0
 var pontosNecessarios = 0
 
+// Recupera o que vem após o target na url. 
+// Com o replace, removemos a '?'
 var nivel = window.location.search.replace('?', '')
 
 if(nivel === 'facil'){
@@ -21,7 +23,7 @@ else if (nivel === 'normal'){
 	tempoTotal = 40
 	pontosNecessarios = 27
 }
-else{
+else if (nivel === 'dificil'){
 	tempoNovoMosquito = 750
 	tempoTotal = 30
 	pontosNecessarios = 22
@@ -30,7 +32,7 @@ else{
 // A cada 'resize' do body novos valores de largura e altura são definidos
 function tamanhoTela() {
 	altura = window.innerHeight
-	largura = window.innerWidth
+	largura = window.innerWidth - 60
 }
 tamanhoTela()
 
@@ -62,10 +64,10 @@ function posicaoRandomica(){
 		document.getElementById('mosquito').remove()
 
 		if(vidas > 3){
-			window.location.href = 'fim_de_jogo.html'
+			window.location.href = 'fim-de-jogo.html'
 		}
 		else{
-			document.getElementById('v' + vidas).src = 'imagens/coracao_vazio.png'
+			document.getElementById('v' + vidas).src = '../imagens/coracao_vazio.png'
 			vidas++
 		}
 	}
@@ -74,7 +76,7 @@ function posicaoRandomica(){
 	var posX = Math.abs(Math.floor(Math.random() * largura) - 120)
 
 	var mosquito = document.createElement('img')
-	mosquito.src = 'imagens/mosquito.png'
+	mosquito.src = '../imagens/mosquito.png'
 	mosquito.className = alteraTamanho() + ' ' + alteraLado() // Associa o retorno das funções as classes css
 	mosquito.style.left = posX+'px'
 	mosquito.style.top = posY+'px'
