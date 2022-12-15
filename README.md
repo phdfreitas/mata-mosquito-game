@@ -22,7 +22,7 @@
 ## Como jogar :video_game:
 
 - Para jogar online:
-	- <a href="https://mata-mosquito-game.phdfreitas.repl.co/" target="_blank">Clique aqui</a>
+	- <a href="https://phdfreitas-matamosquitogame.netlify.app/" target="_blank">Clique aqui</a>
 - Caso queira baixar a aplicação, faça o seguinte:
 	- Abra o terminal do seu sistema operacional e cole o comando abaixo:
 	> git clone https://github.com/phdfreitas/mata-mosquito-game.git
